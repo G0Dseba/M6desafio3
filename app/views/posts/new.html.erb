@@ -1,11 +1,31 @@
-<% content_for :title, "New post" %>
+<h1>Nueva Publicación</h1>
 
-<h1>New post</h1>
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> impidieron guardar esta publicación:</h2>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= render "form", post: @post %>
+  <div class="form-group">
+    <%= form.label :title, 'Título' %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
 
-<br>
+  <div class="form-group">
+    <%= form.label :content, 'Contenido' %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
-</div>
+  <div class="form-group">
+    <%= form.submit 'Crear Publicación', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Regresar', posts_path, class: 'btn btn-secondary' %>
+

@@ -1,0 +1,30 @@
+body {
+  background-color: #ffebee; /* Fondo color rojo claro */
+  color: #880e4f; /* Texto color rojo oscuro */
+}
+
+.navbar {
+  background-color: #c2185b; /* Barra de navegación roja */
+}
+
+.btn-primary {
+  background-color: #d32f2f; /* Botones principales rojos */
+  border-color: #b71c1c;
+}
+
+.btn-secondary {
+  background-color: #f8bbd0; /* Botones secundarios rosa claro */
+  border-color: #f48fb1;
+}
+
+.table {
+  background-color: #ffebee; /* Tablas con fondo rojo claro */
+}
+
+.form-control {
+  border-color: #b71c1c; /* Bordes de formularios rojos */
+}
+
+h1, h3 {
+  color: #b71c1c; /* Títulos color rojo oscuro */
+} 

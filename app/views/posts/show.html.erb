@@ -1,10 +1,37 @@
-<p style="color: green"><%= notice %></p>
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
 
-<%= render @post %>
+<h3>Reacciones</h3>
+<%= form_with(url: post_likes_path(@post), local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :kind, 'Me gusta' %>
+    <%= form.radio_button :kind, 'like' %>
+    <%= form.label :kind, 'No me gusta' %>
+    <%= form.radio_button :kind, 'dislike' %>
+  </div>
+  <div class="form-group">
+    <%= form.submit 'Reaccionar', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<% @post.likes.each do |like| %>
+  <p><%= like.kind %> por <%= like.user.name %></p>
+<% end %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+<h3>Comentarios</h3>
+<% @post.comments.each do |comment| %>
+  <p><%= comment.content %> <% if comment.user %>por <%= comment.user.name %><% else %>anónimamente<% end %></p>
+<% end %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
+<%= form_with(model: [@post, @post.comments.build], local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :content, 'Comentario' %>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= form.submit 'Agregar Comentario', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Editar', edit_post_path(@post), class: 'btn btn-secondary' %>
+<%= link_to 'Eliminar', post_path(@post), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta publicación?' }, class: 'btn btn-danger' %>
+<%= link_to 'Regresar', posts_path, class: 'btn btn-primary' %>

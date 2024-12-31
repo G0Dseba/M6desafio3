@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
+
   resources :posts do
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+    
     member do
-      post 'like'
-      post 'dislike'
+      post 'like', to: 'likes#create', kind: 'like'
+      post 'dislike', to: 'likes#create', kind: 'dislike'
     end
   end
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -20,3 +24,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: "posts#index"
 end
+
