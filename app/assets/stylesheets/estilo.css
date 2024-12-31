@@ -1,30 +1,38 @@
 body {
-  background-color: #ffebee; /* Fondo color rojo claro */
-  color: #880e4f; /* Texto color rojo oscuro */
+  background-color: #ffebee !important; /* Fondo color rojo claro */
+  color: #880e4f !important; /* Texto color rojo oscuro */
 }
 
-.navbar {
-  background-color: #c2185b; /* Barra de navegación roja */
+html body {
+  background-color: #ffebee !important; /* Especificidad más alta */
+}
+
+#mi-navbar {
+  background-color: #c2185b !important; /* Barra de navegación roja */
+}
+
+#mi-container-fluid {
+  background-color: #c2185b !important; /* Especificidad más alta */
 }
 
 .btn-primary {
-  background-color: #d32f2f; /* Botones principales rojos */
-  border-color: #b71c1c;
+  background-color: #d32f2f !important; /* Botones principales rojos */
+  border-color: #b71c1c !important;
 }
 
 .btn-secondary {
-  background-color: #f8bbd0; /* Botones secundarios rosa claro */
-  border-color: #f48fb1;
+  background-color: #f8bbd0 !important; /* Botones secundarios rosa claro */
+  border-color: #f48fb1 !important;
 }
 
 .table {
-  background-color: #ffebee; /* Tablas con fondo rojo claro */
+  background-color: #ffebee !important; /* Tablas con fondo rojo claro */
 }
 
 .form-control {
-  border-color: #b71c1c; /* Bordes de formularios rojos */
+  border-color: #b71c1c !important; /* Bordes de formularios rojos */
 }
 
 h1, h3 {
-  color: #b71c1c; /* Títulos color rojo oscuro */
-} 
+  color: #b71c1c !important; /* Títulos color rojo oscuro */
+}
